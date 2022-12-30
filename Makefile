@@ -6,7 +6,7 @@
 #    By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 12:41:12 by ide-la-i          #+#    #+#              #
-#    Updated: 2022/12/22 12:53:52 by ide-la-i         ###   ########.fr        #
+#    Updated: 2022/12/30 13:54:26 by ide-la-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SOURCE = $(shell find . -name "*.c")
+SOURCE = $(shell find . -name "*.c") # poner todos los archivos de uno en uno y llamar makefile
 
 OBJ = $(SOURCE:.c=.o)
 

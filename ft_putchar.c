@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/22 14:43:50 by ide-la-i          #+#    #+#             */
-/*   Updated: 2022/12/30 13:54:52 by ide-la-i         ###   ########.fr       */
+/*   Created: 2022/12/30 13:05:53 by ide-la-i          #+#    #+#             */
+/*   Updated: 2022/12/30 13:49:09 by ide-la-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdio.h> // quitar
-# include <stdarg.h>
-# include <unistd.h>
-
-int	ft_printf(char const *, ...);
-int	ft_putchar(char c);
-int	ft_putchar(char c);
-
-#endif
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
