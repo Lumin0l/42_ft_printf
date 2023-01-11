@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:54:36 by ide-la-i          #+#    #+#             */
-/*   Updated: 2023/01/10 16:01:57 by ide-la-i         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:02:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ p
 
 
 
-x
-X
+
+
 
 */
 int	ft_arg_processor(char c, va_list args)
@@ -38,9 +38,11 @@ int	ft_arg_processor(char c, va_list args)
 		return (counter = ft_putnbr(va_arg(args, int)));
 	if (c == 'u')
 		return (counter = ft_putnbr_unsigned(va_arg(args, unsigned int)));
+	if (c == 'x' || c == 'X')
+		return (counter = ft_puthexa(c, va_arg(args, int)));
 /* Continuar aquí */
 	if (c == 'p')
-		return (counter = counter + ft_putstr(va_arg(args, void *)));
+		return (counter = );
 }		
 
 int	ft_printf(char const *format_string, ...)
@@ -77,8 +79,25 @@ int	main(void)
 {
 	int num;
 	
-	num = ft_printf("%s\n", "cinco");
-	printf("%i\n\n", num);
+	ft_printf("Test char1: ");
+	num = ft_printf("%c\n", 'c');
+	ft_printf("return value:%i\n\n", num);
+
+	ft_printf("Test char2:");
+	num = ft_printf(" %c, %c, %c\n", 'a', 'b', 'c');
+	ft_printf("return value: %i\n\n", num);
+
+	ft_printf("Test hexa1: ");
+	num = ft_printf("%x\n", 41394);
+	ft_printf("return value: %i\n\n", num);
+
+	ft_printf("Test hexa2: ");
+	num = ft_printf("%X\n", 41394);
+	ft_printf("return value: %i\n\n", num);
+
+	ft_printf("Test hexa3: ");
+	num = ft_printf("%x, %X, %x, %X\n", 41394, 50132, 50132, 41394);
+	ft_printf("return value: %i\n\n", num);
 	
 
 	num = printf("%%\n");

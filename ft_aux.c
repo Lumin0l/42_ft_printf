@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_aux.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:08:54 by ide-la-i          #+#    #+#             */
-/*   Updated: 2023/01/10 15:50:02 by ide-la-i         ###   ########.fr       */
+/*   Updated: 2023/01/11 11:00:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,25 @@ int	ft_putnbr_unsigned(unsigned int n)
 		counter = counter + ft_putnbr((n / 10));
 	}
 	ft_putchar((n % 10) + '0');
+	return (counter);
+}
+
+int	ft_puthexa(char c, int n)
+{
+	unsigned int	counter;
+
+	counter = 1;
+	if (c == 'x')
+	{
+		if (n >= 16)
+			counter = counter + ft_puthexa(c, n / 16);
+		ft_putchar("0123456789abcdef"[n % 16]);		
+	}
+	else if (c == 'X')
+	{
+		if (n >= 16)
+			counter = counter + ft_puthexa(c, n / 16);
+		ft_putchar("0123456789ABCDEF"[n % 16]);
+	}
 	return (counter);
 }
