@@ -3,28 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:54:36 by ide-la-i          #+#    #+#             */
-/*   Updated: 2023/01/11 11:02:25 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/12 17:52:44 by ide-la-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
-/*
-casos:
 
+static int	ft_put_pointer(unsigned long int n)
+{
+	unsigned int	counter;
 
-p
+	counter = 1;
+	if (n >= 16)
+		counter = counter + ft_put_pointer(n / 16);
+	ft_putchar("0123456789abcdef"[n % 16]);
+	return (counter);
+}
 
-
-
-
-
-
-*/
-int	ft_arg_processor(char c, va_list args)
+static int	ft_arg_processor(char c, va_list args)
 {
 	unsigned int	counter;
 
@@ -40,48 +39,53 @@ int	ft_arg_processor(char c, va_list args)
 		return (counter = ft_putnbr_unsigned(va_arg(args, unsigned int)));
 	if (c == 'x' || c == 'X')
 		return (counter = ft_puthexa(c, va_arg(args, int)));
-/* Continuar aquí */
 	if (c == 'p')
-		return (counter = );
-}		
+	{
+		ft_putstr("0x");
+		return (counter = 2 + ft_put_pointer(va_arg(args, unsigned long int)));
+	}
+	else
+		return (-1);
+}	
 
 int	ft_printf(char const *format_string, ...)
 {
-	char			*str;
 	unsigned int	i;
-	unsigned int	counter;
+	int				counter;
 	va_list			args;
 
 	if (!format_string)
 		return (-1);
 	i = 0;
 	counter = 0;
-	str = (char *)format_string;
 	va_start(args, format_string);
-	while (str[i] != '\0')
+	while (format_string[i] != '\0')
 	{
-		if (str[i] != '%')
+		if (format_string[i] != '%')
 		{
-			counter = counter + ft_putchar(str[i]);
+			counter = counter + ft_putchar(format_string[i]);
 			i++;
 		}
 		else
 		{
-			counter = counter + ft_arg_processor(str[i + 1], args);
+			counter = counter + ft_arg_processor(format_string[i + 1], args);
 			i = i + 2;
 		}
 	}
 	va_end(args);
+	printf("perro: %i\n", counter);
 	return (counter);
 }
+
 
 int	main(void)
 {
 	int num;
+	char *pointer = "asdf";
 	
 	ft_printf("Test char1: ");
 	num = ft_printf("%c\n", 'c');
-	ft_printf("return value:%i\n\n", num);
+	ft_printf("return value: %i\n\n", num);
 
 	ft_printf("Test char2:");
 	num = ft_printf(" %c, %c, %c\n", 'a', 'b', 'c');
@@ -98,8 +102,12 @@ int	main(void)
 	ft_printf("Test hexa3: ");
 	num = ft_printf("%x, %X, %x, %X\n", 41394, 50132, 50132, 41394);
 	ft_printf("return value: %i\n\n", num);
-	
 
-	num = printf("%%\n");
-	printf("%i\n", num);
+	ft_printf("Test ponter1: ");
+	num = ft_printf("%p\n", pointer);
+	ft_printf("return value: %i\n\n", num);
+	
+	ft_printf("Test error1: ");
+	num = ft_printf("%q\n", 10);
+	ft_printf("return value: %i\n\n", num);
 }
