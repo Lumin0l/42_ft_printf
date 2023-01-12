@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:54:36 by ide-la-i          #+#    #+#             */
-/*   Updated: 2023/01/12 18:36:13 by ide-la-i         ###   ########.fr       */
+/*   Updated: 2023/01/13 00:20:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ static int	ft_arg_processor(char c, va_list args)
 	if (c == 'c')
 		return (counter = ft_putchar(va_arg(args, int)));
 	if (c == 's')
+	{
 		return (counter = ft_putstr(va_arg(args, char *)));
+	}	
 	if (c == 'i' || c == 'd')
 		return (counter = ft_putnbr(va_arg(args, int)));
 	if (c == 'u')
@@ -76,7 +78,7 @@ int	ft_printf(char const *format_string, ...)
 	return (counter);
 }
 
-/*
+
 int	main(void)
 {
 	int num;
@@ -88,6 +90,14 @@ int	main(void)
 
 	ft_printf("Test char2:");
 	num = ft_printf(" %c, %c, %c\n", 'a', 'b', 'c');
+	ft_printf("return value: %i\n\n", num);
+
+	ft_printf("Test string1: ");
+	num = ft_printf("%s\n", "hola piqué");
+	ft_printf("return value: %i\n\n", num);
+
+	ft_printf("Test string2: ");
+	num = ft_printf("%s\n", "");
 	ft_printf("return value: %i\n\n", num);
 
 	ft_printf("Test hexa1: ");
@@ -107,7 +117,6 @@ int	main(void)
 	ft_printf("return value: %i\n\n", num);
 	
 	ft_printf("Test error1: ");
-	num = ft_printf("%q\n", 10);
+	num = ft_printf("%a\n", 10);
 	ft_printf("return value: %i\n\n", num);
 }
-*/
