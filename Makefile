@@ -6,36 +6,39 @@
 #    By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 12:41:12 by ide-la-i          #+#    #+#              #
-#    Updated: 2023/01/12 18:04:14 by ide-la-i         ###   ########.fr        #
+#    Updated: 2023/01/12 18:45:06 by ide-la-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SOURCE = ft_printf.c\
+CC = gcc
 
-		ft_aux.c
+CFLAGS = -Wall -Wextra -Werror
 
-OBJS = $(SOURCE:.c=.o)
+SOURCE = $(shell find . -name "*.c") # poner todos los archivos de uno en uno y llamar makefile
 
-all : $(NAME)
+OBJ = $(SOURCE:.c=.o)
 
-$(NAME): $(OBJS)
+LIB = ar rc $(NAME)
 
-	ar rcs $(NAME) $(OBJS)
+RANLIB = ranlib $(NAME)
 
-$(OBJS): $(SOURCE)
+RM = rm -f
 
-	gcc -Wall -Wextra -Werror -c $(SOURCE)
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) -c $(SOURCE)
+	@$(LIB) $(OBJ)
+	@$(RANLIB) $(NAME)
 
 clean:
+	@$(RM) &(OBJ)
 
-	rm -f $(OBJS)
-
-fclean : clean
-
-	rm -f $(NAME)
+fclean: clean
+		@$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re

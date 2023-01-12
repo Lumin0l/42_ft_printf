@@ -6,7 +6,7 @@
 /*   By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:54:36 by ide-la-i          #+#    #+#             */
-/*   Updated: 2023/01/12 17:52:44 by ide-la-i         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:36:13 by ide-la-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,10 @@ int	ft_printf(char const *format_string, ...)
 		}
 	}
 	va_end(args);
-	printf("perro: %i\n", counter);
 	return (counter);
 }
 
-
+/*
 int	main(void)
 {
 	int num;
@@ -111,3 +110,4 @@ int	main(void)
 	num = ft_printf("%q\n", 10);
 	ft_printf("return value: %i\n\n", num);
 }
+*/
