@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/22 12:41:12 by ide-la-i          #+#    #+#              #
-#    Updated: 2023/01/12 18:45:06 by ide-la-i         ###   ########.fr        #
+#    Updated: 2023/01/19 10:37:44 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SOURCE = $(shell find . -name "*.c") # poner todos los archivos de uno en uno y llamar makefile
+SOURCE = ft_printf.c \ ft_aux.c 
 
 OBJ = $(SOURCE:.c=.o)
 
@@ -34,7 +34,7 @@ $(NAME): $(OBJ)
 	@$(RANLIB) $(NAME)
 
 clean:
-	@$(RM) &(OBJ)
+	@$(RM) $(OBJ)
 
 fclean: clean
 		@$(RM) $(NAME)
