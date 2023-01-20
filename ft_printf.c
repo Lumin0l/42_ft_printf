@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:54:36 by ide-la-i          #+#    #+#             */
-/*   Updated: 2023/01/13 00:20:43 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/20 13:50:49 by ide-la-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,17 @@ static int	ft_arg_processor(char c, va_list args)
 	unsigned int	counter;
 
 	if (c == '%')
-		counter = ft_putchar('%');
+		return (counter = ft_putchar('%'));
 	if (c == 'c')
 		return (counter = ft_putchar(va_arg(args, int)));
 	if (c == 's')
-	{
 		return (counter = ft_putstr(va_arg(args, char *)));
-	}	
 	if (c == 'i' || c == 'd')
 		return (counter = ft_putnbr(va_arg(args, int)));
 	if (c == 'u')
 		return (counter = ft_putnbr_unsigned(va_arg(args, unsigned int)));
 	if (c == 'x' || c == 'X')
-		return (counter = ft_puthexa(c, va_arg(args, int)));
+		return (counter = ft_puthexa(c, va_arg(args, unsigned int)));
 	if (c == 'p')
 	{
 		ft_putstr("0x");
@@ -78,7 +76,7 @@ int	ft_printf(char const *format_string, ...)
 	return (counter);
 }
 
-
+/*
 int	main(void)
 {
 	int num;
@@ -119,4 +117,13 @@ int	main(void)
 	ft_printf("Test error1: ");
 	num = ft_printf("%a\n", 10);
 	ft_printf("return value: %i\n\n", num);
+
+	ft_printf("Test percentage: ");
+	num = ft_printf("%%\n");
+	ft_printf("return value: %i\n\n", num);
+
+	printf("Test percentage original printf: ");
+	num = printf("%%\n");
+	printf("return value: %i\n\n", num);
 }
+*/

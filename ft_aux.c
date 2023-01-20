@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_aux.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:08:54 by ide-la-i          #+#    #+#             */
-/*   Updated: 2023/01/13 00:24:15 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/20 13:49:40 by ide-la-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ int	ft_putstr(char *str)
 
 	i = 0;
 	counter = 0;
-	if (str[i] == '\0')
-	{
-		write(1, "null", 4);
-		return (4);
-	}
 	while (str[i] != '\0')
 	{
 		counter = counter + ft_putchar(str[i]);
@@ -74,7 +69,7 @@ int	ft_putnbr_unsigned(unsigned int n)
 	return (counter);
 }
 
-int	ft_puthexa(char c, int n)
+int	ft_puthexa(char c, unsigned int n)
 {
 	unsigned int	counter;
 
