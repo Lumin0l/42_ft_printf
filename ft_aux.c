@@ -6,7 +6,7 @@
 /*   By: ide-la-i <ide-la-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 15:08:54 by ide-la-i          #+#    #+#             */
-/*   Updated: 2023/01/20 13:49:40 by ide-la-i         ###   ########.fr       */
+/*   Updated: 2023/01/20 15:23:01 by ide-la-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_putstr(char *str)
 
 	i = 0;
 	counter = 0;
+	if (!str)
+		return (counter = ft_putstr("(null)"));
 	while (str[i] != '\0')
 	{
 		counter = counter + ft_putchar(str[i]);
